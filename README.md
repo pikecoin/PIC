@@ -1,13 +1,13 @@
-# BX-bot
+# picoin
 
 [![Build Status](https://travis-ci.org/gazbert/bxbot.svg?branch=master)](https://travis-ci.org/gazbert/bxbot)
-[![Join the chat at https://gitter.im/BX-bot/Lobby](https://badges.gitter.im/BX-bot/Lobby.svg)](https://gitter.im/BX-bot/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)		 	 
+[![Join the chat at https://gitter.im/picoin/Lobby](https://badges.gitter.im/picoin/Lobby.svg)](https://gitter.im/picoin/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)		 	 
  
-## What is BX-bot?
+## What is picoin?
 
 <img src="./docs/bxbot-cropped.png" align="right" width="25%" />
 
-BX-bot (_Bex_) is a simple [Bitcoin](https://bitcoin.org) trading bot written in Java for trading on cryptocurrency 
+picoin (_Bex_) is a simple [Bitcoin](https://bitcoin.org) trading bot written in Java for trading on cryptocurrency 
 [exchanges](https://bitcoin.org/en/exchanges).
 
 The project contains the basic infrastructure to trade on a [cryptocurrency](http://coinmarketcap.com/) exchange...
@@ -49,7 +49,7 @@ it will log the error, send an email alert (if configured), and then shut down.
   
 The bot runs on Linux, macOS, and Windows.
 
-BX-bot requires a Java 11 JDK ([openjdk-11-jdk](http://openjdk.java.net/projects/jdk/11/) or 
+picoin requires a Java 11 JDK ([openjdk-11-jdk](http://openjdk.java.net/projects/jdk/11/) or 
 [Oracle JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html))
 to be installed on the machine you are going to use to build and run the bot. 
 
@@ -91,7 +91,7 @@ If you want to just play around with the
 and evaluate the bot, Docker is the way to go.
 
 1. Install [Docker](https://docs.docker.com/engine/installation/) on the machine you want to run the bot.
-1. Fetch the BX-bot image from [Docker Hub](https://hub.docker.com/r/gazbert/bxbot/): `docker pull gazbert/bxbot:x.x.x` -
+1. Fetch the picoin image from [Docker Hub](https://hub.docker.com/r/gazbert/bxbot/): `docker pull gazbert/bxbot:x.x.x` -
    replace `x.x.x` with the [Release](https://github.com/gazbert/bxbot/releases) version of the bot you want to run, e.g.
    `docker pull gazbert/bxbot:0.11.0`
 1. Run the Docker container: `docker container run --name bxbot-x.x.x -it gazbert/bxbot:x.x.x bash`
@@ -107,7 +107,7 @@ If you plan on developing the bot, you'll need [openjdk-11-jdk](http://openjdk.j
 [Oracle JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) installed on your dev box.
 
 You can use [Maven](https://maven.apache.org) or [Gradle](https://gradle.org/) to build the bot and pull down the dependencies. 
-BX-bot depends on [Spring Boot](http://projects.spring.io/spring-boot/), [log4j](http://logging.apache.org/log4j), 
+picoin depends on [Spring Boot](http://projects.spring.io/spring-boot/), [log4j](http://logging.apache.org/log4j), 
 [JavaMail](https://java.net/projects/javamail/pages/Home), [Google Gson](https://code.google.com/p/google-gson/), and 
 [Google Guava](https://github.com/google/guava).
 
@@ -135,7 +135,7 @@ submit bugs here.
  
 You are welcome to take on new features or fix bugs! See [here](CONTRIBUTING.md) for how to get involved. 
 
-For help and general questions about BX-bot, check out the [Gitter](https://gitter.im/BX-bot/Lobby) channel.
+For help and general questions about picoin, check out the [Gitter](https://gitter.im/picoin/Lobby) channel.
 
 ## Testing
 The bot has undergone basic unit testing on a _best-effort_ basis. 
@@ -176,10 +176,10 @@ The [`engine.xml`](./config/engine.xml) file is used to configure the Trading En
 All elements are mandatory.
 
 * The `<bot-id>` value is a unique identifier for the bot. This is used by 
-  [BX-bot UI Server](https://github.com/gazbert/bxbot-ui-server) (work in progress) to identify and route configuration 
+  [picoin UI Server](https://github.com/gazbert/bxbot-ui-server) (work in progress) to identify and route configuration 
   updates and commands to the bot. Value must be an alphanumeric string. Underscores and dashes are also permitted.
 
-* The `<bot-name>` is a friendly name for the bot. The is used by [BX-bot UI](https://github.com/gazbert/bxbot-ui) 
+* The `<bot-name>` is a friendly name for the bot. The is used by [picoin UI](https://github.com/gazbert/bxbot-ui) 
   (work in progress) to display the bot's name. Value must be an alphanumeric string. Spaces are allowed.
       
 * The `<emergency-stop-currency>` value must be set to prevent catastrophic loss on the exchange. 
@@ -197,10 +197,10 @@ All elements are mandatory.
   too hard. You'll need to experiment with the trade cycle interval for different exchanges.
 
 ##### Exchange Adapters
-You specify the Exchange Adapter you want BX-bot to use in the 
+You specify the Exchange Adapter you want picoin to use in the 
 [`exchange.xml`](./config/exchange.xml) file. 
 
-BX-bot only supports 1 Exchange Adapter per bot, but you could have multiple bots running on the same exchange.
+picoin only supports 1 Exchange Adapter per bot, but you could have multiple bots running on the same exchange.
 
 ```xml
 <exchange>
@@ -252,7 +252,7 @@ BX-bot only supports 1 Exchange Adapter per bot, but you could have multiple bot
 All elements are mandatory unless stated otherwise.
 
 * The `<name>` value is a friendly name for the Exchange. It is used in log statements and by
-  [BX-bot UI](https://github.com/gazbert/bxbot-ui) (work in progress) to display the Exchange's name.
+  [picoin UI](https://github.com/gazbert/bxbot-ui) (work in progress) to display the Exchange's name.
   Value must be an alphanumeric string. Spaces are allowed.
 
 * For the `<adapter>` value, you must specify the fully qualified name of the Exchange Adapter class for the Trading Engine
@@ -316,7 +316,7 @@ All elements are mandatory unless stated otherwise.
   [Bitstamp](https://www.bitstamp.net/api/) - see `currency_pair` values.
 
 * The `<name>` value is a friendly name for the market. The is used in the logs and by
-  [BX-bot UI](https://github.com/gazbert/bxbot-ui) (work in progress) to display the market's name.
+  [picoin UI](https://github.com/gazbert/bxbot-ui) (work in progress) to display the market's name.
   Value must be an alphanumeric string.
 
 * The `<base-currency>` value is the currency short code for the base currency in the currency pair. When you buy or sell a
@@ -330,7 +330,7 @@ All elements are mandatory unless stated otherwise.
 * The `<enabled>` value allows you to toggle trading on the market. Remember, config changes are only applied on startup.
 
 * The `<trading-strategy-id>` value _must_ match a strategy `<id>` defined in your `strategies.xml` config.
-  Currently, BX-bot only supports 1 `<strategy>` per `<market>`.
+  Currently, picoin only supports 1 `<strategy>` per `<market>`.
 
 ##### Strategies #####
 You specify the Trading Strategies you wish to use in the 
@@ -389,10 +389,10 @@ All elements are mandatory unless stated otherwise.
   Value must be an alphanumeric string. Underscores and dashes are also permitted.
 
 * The `<name>` value is a friendly name for the strategy. The is used in the logs and by
-  [BX-bot UI](https://github.com/gazbert/bxbot-ui) (work in progress) to display the strategy's name.
+  [picoin UI](https://github.com/gazbert/bxbot-ui) (work in progress) to display the strategy's name.
   Value must be an alphanumeric string. Spaces are allowed.
 
-* The `<description>` value is optional, and used by [BX-bot UI](https://github.com/gazbert/bxbot-ui) (work in progress)
+* The `<description>` value is optional, and used by [picoin UI](https://github.com/gazbert/bxbot-ui) (work in progress)
   to display the strategy's description.
 
 You configure the loading of your strategy using either a `<class-name>` _or_ a `<bean-name>`; you cannot specify both. 
@@ -446,7 +446,7 @@ _"Battle not with monsters, lest ye become a monster, and if you gaze into the a
 The best place to start is with the
 [`ExampleScalpingStrategy`](./bxbot-strategies/src/main/java/com/gazbert/bxbot/strategies/ExampleScalpingStrategy.java) -
 more ideas can be found in the excellent [ta4j](https://github.com/ta4j/ta4j) project.
-There is also a Trading Strategy specific channel on [Gitter](https://gitter.im/BX-bot/trading-strategies).
+There is also a Trading Strategy specific channel on [Gitter](https://gitter.im/picoin/trading-strategies).
   
 Your strategy must implement the [`TradingStrategy`](./bxbot-strategy-api/src/main/java/com/gazbert/bxbot/strategy/api/TradingStrategy.java)
 interface. This allows the Trading Engine to:
@@ -470,7 +470,7 @@ See the Javadoc for full details of the API.
 
 ##### Error Handling
 Your Trading Strategy implementation should throw a [`StrategyException`](./bxbot-strategy-api/src/main/java/com/gazbert/bxbot/strategy/api/StrategyException.java)
-whenever it 'breaks'. BX-bot's error handling policy is designed to fail hard and fast; it will log the error, send an
+whenever it 'breaks'. picoin's error handling policy is designed to fail hard and fast; it will log the error, send an
 Email Alert (if configured), and shut down.
 
 Note that the inbuilt Exchange Adapters will (some more often than others!) throw an
@@ -496,8 +496,8 @@ also has a compile-time dependency on log4j and Google Guava.
 
 ##### Packaging & Deployment #####
 To get going fast, you can code your Trading Strategy and place it in the [bxbot-strategies](./bxbot-strategies/src/main/java/com/gazbert/bxbot/strategies)
-module alongside the example strategy. When you build the project, your Trading Strategy will be included in the BX-bot jar. 
-You can also create your own jar for your strats, e.g. `my-strats.jar`, and include it on BX-bot's runtime classpath -
+module alongside the example strategy. When you build the project, your Trading Strategy will be included in the picoin jar. 
+You can also create your own jar for your strats, e.g. `my-strats.jar`, and include it on picoin's runtime classpath -
 see the _[Installation Guide](#the-manual-way)_ for how to do this.
 
 ### How do I write my own Exchange Adapter?
@@ -505,7 +505,7 @@ _"I was seldom able to see an opportunity until it had ceased to be one."_ - Mar
 
 The best place to start is with one of the inbuilt Exchange Adapters - see the latest 
 [`BitstampExchangeAdapter`](./bxbot-exchanges/src/main/java/com/gazbert/bxbot/exchanges/BitstampExchangeAdapter.java)
-for example. There is also an Exchange Adapter specific channel on [Gitter](https://gitter.im/BX-bot/exchange-adapters).
+for example. There is also an Exchange Adapter specific channel on [Gitter](https://gitter.im/picoin/exchange-adapters).
 
 Your adapter must implement the [`TradingApi`](./bxbot-trading-api/src/main/java/com/gazbert/bxbot/trading/api/TradingApi.java)
 and the [`ExchangeAdapter`](./bxbot-exchange-api/src/main/java/com/gazbert/bxbot/exchange/api/ExchangeAdapter.java)
@@ -531,7 +531,7 @@ section, which contains `<non-fatal-error-codes>` and `<non-fatal-error-messages
 adapter when to throw the exception.
 
 The first release of the bot is _single-threaded_ for simplicity. The downside to this is that if an API call to the 
-exchange gets blocked on IO, BX-bot will get stuck until your Exchange Adapter frees the block. The Trading API provides
+exchange gets blocked on IO, picoin will get stuck until your Exchange Adapter frees the block. The Trading API provides
 an `ExchangeNetworkException` for your adapter to throw if it times-out connecting to the exchange. It is your responsibility to free up any blocked
 connections - see the [`AbstractExchangeAdapter`](./bxbot-exchanges/src/main/java/com/gazbert/bxbot/exchanges/AbstractExchangeAdapter.java)
 for an example how to do this.
@@ -559,14 +559,14 @@ The inbuilt Exchange Adapters also have compile-time dependencies on log4j, Goog
 ##### Packaging & Deployment
 To get going fast, you can code your Exchange Adapter and place it in the 
 [bxbot-exchanges](./bxbot-exchanges/src/main/java/com/gazbert/bxbot/exchanges) module alongside the other inbuilt adapters. 
-When you build the project, your Exchange Adapter will be included in the BX-bot jar. You can also create your own jar 
-for your adapters, e.g. `my-adapters.jar`, and include it on BX-bot's runtime classpath -
+When you build the project, your Exchange Adapter will be included in the picoin jar. You can also create your own jar 
+for your adapters, e.g. `my-adapters.jar`, and include it on picoin's runtime classpath -
 see the _[Installation Guide](#the-manual-way)_ for how to do this.
 
 ### Logging
 Logging for the bot is provided by [log4j](http://logging.apache.org/log4j). The log file is written to `logs/bxbot.log` 
 using a rolling policy. When a log file size reaches 100 MB or a new day is started, it is archived and a new log file 
-is created. BX-bot will create up to 7 archives on the same day; these are stored in a directory based on the current 
+is created. picoin will create up to 7 archives on the same day; these are stored in a directory based on the current 
 year and month. Only the last 90 archives are kept. Each archive is compressed using gzip. The logging level is set at `info`. 
 You can change this default logging configuration in the [`config/log4j2.xml`](./config/log4j2.xml) file.
 
@@ -577,7 +577,7 @@ output from the Exchange Adapters; it's very handy for debugging, but not so goo
 The following features are in the pipeline:
 
 - A REST API for administering the bot. It's being developed on the [bxbot-restapi](https://github.com/gazbert/bxbot/tree/bxbot-restapi) branch.
-- An [admin server](https://github.com/gazbert/bxbot-ui-server) for proxying commands and config updates to BX-bots in the cloud. 
+- An [admin server](https://github.com/gazbert/bxbot-ui-server) for proxying commands and config updates to picoins in the cloud. 
   It will consume the bot's REST API.
 - A [Web UI](https://github.com/gazbert/bxbot-ui) written in [Angular](https://angular.io/) for administering multiple
   bots in the cloud. It will integrate with the admin server. 
